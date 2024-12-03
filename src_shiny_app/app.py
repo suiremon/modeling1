@@ -4,8 +4,8 @@ from scipy.optimize import differential_evolution
 from scipy.integrate import quad
 from shiny.express import input, render, ui
 from htmltools import HTML, div
-g = 1.62
-Vsafe = 3
+g = 1.62 
+Vsafe = 0
 reactive_values = {'result': None, 't': None, 't_x': None}
 g_total = 9 * 9.81
 with ui.card(full_screen=True):
@@ -151,7 +151,7 @@ with ui.card():
         V_eng_off = getV_eng_off(t, V0)
         V_eng_on = getV_eng_on(t_x, M, m, g, Vp, Vm, V_eng_off)
         return ui.markdown(
-        f"**Вертикальная скорость на высоте 0:** {V_eng_on:.2f} м/с<br>"
+        f"**Вертикальная скорость на высоте 0:** -{V_eng_on:.2f} м/с<br>"
         f"**Высота, на которой был включен двигатель:** {H:.2f} м<br>"
         f"**Время полета с выключенным двигателем:** {t:.2f} с<br>"
         f"**Время полета со включенным двигателем:** {t_x:.2f} с"
